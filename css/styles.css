@@ -1,0 +1,864 @@
+body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    color: #111;
+    background-color: #f8f7f5;
+}
+
+h1, h2, h3 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 400;
+}
+
+/* =========================
+   HEADER PREMIUM 2.0
+========================= */
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 120px;
+    padding: 0 80px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    background: transparent;
+    transition: all 0.5s ease;
+    z-index: 1000;
+
+    opacity: 0;
+    transform: translateY(-30px);
+    animation: headerFade 1.2s ease forwards;
+}
+
+/* Estado cuando haces scroll */
+header.scrolled {
+    height: 90px;
+    background: rgba(255,255,255,0.85);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+}
+
+/* Línea inferior ultra sutil */
+header::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 8%;
+    width: 84%;
+    height: 1px;
+    background: rgba(0,0,0,0.05);
+    transition: opacity 0.4s ease;
+}
+
+header.scrolled::after {
+    opacity: 0;
+}
+
+
+
+/* Animación entrada */
+@keyframes headerFade {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.logo {
+    height: 220px;
+    width: auto;
+    object-fit: contain;
+    transition: all 0.4s ease;
+}
+
+/* Se reduce al hacer scroll */
+header.scrolled .logo {
+    height: 110px;
+}
+
+/* Micro animación hover */
+.logo:hover {
+    transform: scale(1.04);
+}
+
+nav {
+    display: flex;
+    gap: 45px;
+}
+
+nav a {
+    position: relative;
+    text-decoration: none;
+    color: #111;
+    font-size: 13px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transition: color 0.3s ease;
+}
+
+/* Línea animada centrada */
+nav a::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -8px;
+    width: 0;
+    height: 1px;
+    background: #111;
+    transition: all 0.4s ease;
+    transform: translateX(-50%);
+}
+
+nav a:hover::after {
+    width: 100%;
+}
+
+nav a {
+    opacity: 0;
+    transform: translateY(-15px);
+    animation: navFade 0.8s ease forwards;
+}
+
+nav a:nth-child(1) { animation-delay: 0.6s; }
+nav a:nth-child(2) { animation-delay: 0.75s; }
+nav a:nth-child(3) { animation-delay: 0.9s; }
+nav a:nth-child(4) { animation-delay: 1.05s; }
+
+@keyframes navFade {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.hero {
+    position: relative;
+    height: 100vh;
+    background: url('../images/hero.png') center/cover no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+/* Overlay editorial */
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to bottom,
+        rgba(0,0,0,0.25),
+        rgba(0,0,0,0.35)
+    );
+}
+
+/* Contenido */
+.hero-content {
+    position: relative;
+    text-align: center;
+    color: white;
+    max-width: 800px;
+    padding: 0 20px;
+
+    opacity: 0;
+    transform: translateY(30px);
+    animation: heroFade 1.4s ease forwards;
+    animation-delay: 0.4s;
+}
+
+.hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 64px;
+    line-height: 1.1;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 18px;
+    letter-spacing: 1px;
+    margin-bottom: 40px;
+    opacity: 0.9;
+}
+
+/* Botón elegante */
+.hero-btn {
+    display: inline-block;
+    padding: 14px 36px;
+    border: 1px solid white;
+    color: white;
+    text-decoration: none;
+    letter-spacing: 2px;
+    font-size: 13px;
+    transition: all 0.4s ease;
+}
+
+.hero-btn:hover {
+    background: white;
+    color: black;
+}
+
+/* Animación */
+@keyframes heroFade {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.about, .portfolio, .services, .contact {
+    padding: 100px 20%;
+    text-align: center;
+}
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.gallery img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+}
+
+.services {
+    padding: 140px 12%;
+    background: #f8f7f5;
+    text-align: center;
+}
+
+.services-header h2 {
+    font-size: 42px;
+    margin-bottom: 20px;
+}
+
+.divider {
+    width: 60px;
+    height: 1px;
+    background: #111;
+    margin: 0 auto 80px;
+}
+
+.services-grid {
+    display: flex;
+    justify-content: space-between;
+    gap: 60px;
+    text-align: left;
+}
+
+.service-item {
+    position: relative;
+    flex: 1;
+    padding-top: 40px;
+    transition: transform 0.4s ease;
+}
+
+.service-item:hover {
+    transform: translateY(-8px);
+}
+
+.service-number {
+    position: absolute;
+    top: -10px;
+    left: 0;
+    font-size: 80px;
+    font-family: 'Playfair Display', serif;
+    color: rgba(0,0,0,0.06);
+    pointer-events: none;
+}
+
+.service-item h3 {
+    font-size: 22px;
+    margin-bottom: 20px;
+}
+
+.service-item p {
+    font-size: 15px;
+    line-height: 1.7;
+    opacity: 0.8;
+}
+
+.contact {
+    background: #111;
+    color: white;
+}
+
+.btn-dark {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 12px 30px;
+    border: 1px solid white;
+    color: white;
+    text-decoration: none;
+}
+
+footer {
+    text-align: center;
+    padding: 30px;
+    font-size: 14px;
+}
+
+.portfolio-grid {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin: 80px 0;
+}
+
+.portfolio-grid {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin: 100px 0;
+}
+
+/* CONTENEDOR FIJO */
+.card {
+    width: 320px;
+    height: 480px;
+    perspective: 1400px;
+    flex-shrink: 0; /* evita que se deformen */
+}
+
+/* AISLAMIENTO TOTAL */
+.card-inner {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transition: transform 0.9s cubic-bezier(.77,0,.18,1);
+    transform-style: preserve-3d;
+}
+
+/* SOLO GIRA, NO CRECE */
+.card.flip .card-inner {
+    transform: rotateY(180deg);
+}
+
+/* CARAS */
+.card-front,
+.card-back {
+    position: absolute;
+    inset: 0; /* mejor que width/height 100% */
+    border-radius: 14px;
+    overflow: hidden;
+    backface-visibility: hidden;
+}
+
+/* IMAGEN */
+.card-front img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+/* Hover elegante */
+.card:hover .card-front img {
+    transform: scale(1.04);
+}
+
+/* REVERSO */
+.card-back {
+    background: #f9f8f6;
+    transform: rotateY(180deg);
+    padding: 60px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
+/* Tipografía más fina */
+.card-back h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    margin-bottom: 25px;
+}
+
+.card-back p {
+    font-size: 15px;
+    line-height: 1.7;
+    margin-bottom: 25px;
+    opacity: 0.85;
+}
+
+.card-back span {
+    font-size: 13px;
+    letter-spacing: 1.5px;
+}
+
+.scroll-indicator {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    color: white;
+    font-size: 11px;
+    letter-spacing: 3px;
+    opacity: 0.8;
+}
+
+.scroll-indicator .line {
+    width: 1px;
+    height: 50px;
+    background: white;
+    margin: 10px auto 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.scroll-indicator .line::after {
+    content: "";
+    position: absolute;
+    top: -50px;
+    left: 0;
+    width: 100%;
+    height: 50px;
+    background: white;
+    animation: scrollLine 2s infinite;
+}
+
+@keyframes scrollLine {
+    0% { top: -50px; }
+    100% { top: 50px; }
+}
+.about {
+    padding: 180px 12%;
+    text-align: center;
+    background: #f8f7f5;
+}
+
+.about-header h2 {
+    font-size: 46px;
+    margin-bottom: 20px;
+}
+
+.about .divider {
+    width: 60px;
+    height: 1px;
+    background: #111;
+    margin: 0 auto 80px;
+}
+
+.about-content {
+    max-width: 760px;
+    margin: 0 auto;
+}
+
+.about-text {
+    font-size: 18px;
+    line-height: 1.9;
+    opacity: 0.85;
+    margin-bottom: 80px;
+}
+
+.about-quote {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    line-height: 1.4;
+}
+
+.cta-section {
+    position: relative;
+    height: 70vh;
+    background: url('../images/cta.png') center/cover no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+}
+
+.cta-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.55);
+}
+
+.cta-content {
+    position: relative;
+    color: white;
+    max-width: 700px;
+    padding: 0 20px;
+}
+
+.cta-content h2 {
+    font-size: 42px;
+    margin-bottom: 20px;
+}
+
+.cta-content p {
+    font-size: 18px;
+    margin-bottom: 40px;
+    opacity: 0.9;
+}
+
+.cta-btn {
+    display: inline-block;
+    padding: 16px 42px;
+    border: 1px solid white;
+    color: white;
+    text-decoration: none;
+    letter-spacing: 2px;
+    font-size: 13px;
+    transition: all 0.4s ease;
+}
+
+.cta-btn:hover {
+    background: white;
+    color: black;
+}
+
+/* =====================================
+   MOBILE PREMIUM RESPONSIVE
+   Magnolia Wedding Studio
+===================================== */
+
+@media (max-width: 1024px) {
+
+    
+
+    /* ================= HEADER ================= */
+
+    header {
+        padding: 0 25px;
+        height: 85px;
+    }
+
+    header.scrolled {
+        height: 75px;
+    }
+
+    .logo {
+        height: 100px;
+    }
+
+    header.scrolled .logo {
+        height: 80px;
+    }
+
+    /* Ocultamos menú desktop */
+    nav {
+        display: none;
+    }
+
+    /* ================= HERO ================= */
+
+    .hero {
+        height: 100svh; /* mejor que 100vh en móviles */
+        padding: 0 20px;
+    }
+
+    .hero-content {
+        max-width: 100%;
+        padding: 0 10px;
+    }
+
+    .hero h1 {
+        font-size: 38px;
+        line-height: 1.15;
+        margin-bottom: 18px;
+    }
+
+    .hero p {
+        font-size: 15px;
+        letter-spacing: 1px;
+        margin-bottom: 35px;
+    }
+
+    .hero-btn {
+        padding: 13px 28px;
+        font-size: 12px;
+        letter-spacing: 2px;
+    }
+
+    .scroll-indicator {
+        display: none; /* en móvil estorba */
+    }
+
+    /* ================= SECCIONES GENERALES ================= */
+
+    .about,
+    .portfolio,
+    .services,
+    .contact {
+        padding: 100px 8%;
+    }
+
+    .divider {
+        margin-bottom: 60px;
+    }
+
+    h2 {
+        font-size: 32px;
+    }
+
+    /* ================= ABOUT ================= */
+
+    .about {
+        padding: 140px 8%;
+    }
+
+    .about-header h2 {
+        font-size: 34px;
+    }
+
+    .about-text {
+        font-size: 16px;
+        line-height: 1.8;
+        margin-bottom: 60px;
+    }
+
+    .about-quote {
+        font-size: 24px;
+        line-height: 1.4;
+    }
+
+    /* ================= SERVICES ================= */
+
+    .services {
+        padding: 140px 8%;
+    }
+
+    .services-header h2 {
+        font-size: 34px;
+    }
+
+    .services-grid {
+        flex-direction: column;
+        gap: 70px;
+        text-align: center;
+    }
+
+    .service-item {
+        padding-top: 20px;
+    }
+
+    .service-number {
+        font-size: 60px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .service-item h3 {
+        font-size: 20px;
+    }
+
+    .service-item p {
+        font-size: 15px;
+    }
+
+    /* ================= PORTFOLIO ================= */
+
+    .portfolio-grid {
+        flex-direction: column;
+        align-items: center;
+        gap: 60px;
+        margin: 80px 0;
+    }
+
+    .card {
+        width: 100%;
+        max-width: 360px;
+        height: 500px;
+    }
+
+    .card-back {
+        padding: 40px 30px;
+    }
+
+    .card-back h3 {
+        font-size: 20px;
+    }
+
+    .card-back p {
+        font-size: 14px;
+    }
+
+    /* ================= GALLERY ================= */
+
+    .gallery {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+
+    .gallery img {
+        height: 350px;
+    }
+
+    /* ================= CTA ================= */
+
+    .cta-section {
+        height: 60vh;
+        padding: 0 20px;
+    }
+
+    .cta-content {
+        max-width: 100%;
+    }
+
+    .cta-content h2 {
+        font-size: 30px;
+        line-height: 1.2;
+        margin-bottom: 20px;
+    }
+
+    .cta-content p {
+        font-size: 15px;
+        margin-bottom: 35px;
+    }
+
+    .cta-btn {
+        padding: 14px 30px;
+        font-size: 12px;
+    }
+
+    /* ================= CONTACT ================= */
+
+    .contact {
+        padding: 120px 8%;
+    }
+
+    .btn-dark {
+        padding: 12px 26px;
+        font-size: 12px;
+    }
+
+    /* ================= FOOTER ================= */
+
+    footer {
+        padding: 40px 20px;
+        font-size: 13px;
+    }
+}
+/* ===============================
+   MOBILE MENU PREMIUM
+================================ */
+
+.hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 6px;
+    cursor: pointer;
+    z-index: 1001;
+    margin-right: 10px;
+}
+
+.hamburger span {
+    width: 26px;
+    height: 1.5px;
+    background: #1a1a1a;
+    transition: all 0.4s ease;
+}
+
+/* Mostrar solo en móvil */
+@media (max-width: 1024px) {
+    .hamburger {
+        display: flex;
+    }
+}
+
+/* Animación a X */
+.hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translateY(5px);
+}
+
+.hamburger.active span:nth-child(2) {
+    transform: rotate(-45deg) translateY(-5px);
+}
+
+/* ================= MENU OVERLAY ================= */
+/* ================= MOBILE MENU MAGNOLIA ================= */
+
+.mobile-menu {
+    position: fixed;
+    inset: 0;
+    background: rgba(255,255,255,0.96);
+    backdrop-filter: blur(20px);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.4s ease;
+
+    z-index: 9998;
+}
+
+.mobile-menu a {
+    text-decoration: none;
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    letter-spacing: 3px;
+    color: black;
+    transition: opacity 0.3s ease;
+}
+
+.mobile-menu a:hover {
+    opacity: 0.6;
+}
+
+.mobile-menu.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Solo visible en móvil */
+@media (min-width: 1025px) {
+    .mobile-menu {
+        display: none;
+    }
+}
+
+/* ================= FIX HEADER MOBILE ================= */
+
+@media (max-width: 1024px) {
+
+    header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 1px;
+    }
+
+    .logo {
+        margin: 0;
+    }
+
+    .hamburger {
+        position: relative;
+        right: 0;
+    }
+
+}
+@media (max-width: 1024px) {
+    nav {
+        display: none !important;
+    }
+}
+
+header {
+    z-index: 1000;
+}
+
+.hamburger {
+    position: relative;
+    z-index: 10000;
+}
+
+.hero-overlay {
+    pointer-events: none;
+}

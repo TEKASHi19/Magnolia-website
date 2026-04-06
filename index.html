@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Magnolia | Wedding Planning & Creative Direction</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/styles.css">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<header>
+    <img src="images/logo.png" alt="Magnolia Logo" class="logo">
+
+    <div class="hamburger">
+    <span></span>
+    <span></span>
+    </div>
+
+    <nav>
+        <a href="#about">About</a>
+        <a href="#portfolio">Portfolio</a>
+        <a href="#services">Services</a>
+        <a href="#contact">Contact</a>
+    </nav>
+
+</header>
+
+<div class="mobile-menu">
+    <a href="#about">About</a>
+    <a href="#portfolio">Portfolio</a>
+    <a href="#services">Services</a>
+    <a href="#contact">Contact</a>
+</div>
+
+<section class="hero">
+    <div class="hero-overlay"></div>
+
+    <div class="hero-content">
+        <h1>Curated celebrations<br>with intention.</h1>
+        <p>Wedding Planning & Creative Direction in Mexico</p>
+        <a href="#contact" class="hero-btn">Begin Your Experience</a>
+    </div>
+    
+     <div class="scroll-indicator">
+    <span>Scroll</span>
+    <div class="line"></div>
+    </div>
+</section>
+
+<section id="about" class="about">
+    
+    <div class="about-header">
+        <h2>Our Philosophy</h2>
+        <div class="divider"></div>
+    </div>
+
+    <div class="about-content">
+        <p class="about-text">
+            At Magnolia, we believe a wedding is not simply an event — 
+            it is a reflection of legacy, culture, and timeless design. 
+            We curate destination weddings across Mexico with precision, 
+            elegance, and uncompromising attention to detail.
+        </p>
+
+        <p class="about-quote">
+            We don’t plan weddings.<br>
+            We curate experiences.
+        </p>
+    </div>
+
+</section>
+
+<section id="portfolio" class="portfolio">
+    <h2>Selected Work</h2>
+    <h3>Da click para conocer la opinion de nuestros clientes</h3>
+    <div class="portfolio-grid">
+
+  <div class="card" >
+    <div class="card-inner">
+      
+      <div class="card-front">
+        <img src="images/boda1.png" alt="Wedding in Tulum">
+      </div>
+
+      <div class="card-back">
+        <h3>Tulum</h3>
+        <p>"Magnolia convirtió nuestra boda en algo mágico. Cada detalle fue perfecto."</p>
+        <span>— Camila & Diego</span>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="card" >
+    <div class="card-inner">
+      
+      <div class="card-front">
+        <img src="images/boda2.png" alt="Wedding in San Miguel">
+      </div>
+
+      <div class="card-back">
+        <h3>San Miguel</h3>
+        <p>"Superó todo lo que imaginamos. Elegancia y calidez en cada momento."</p>
+        <span>— Ana & Luis</span>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="card" >
+    <div class="card-inner">
+      
+      <div class="card-front">
+        <img src="images/boda3.png" alt="Wedding in Valle">
+      </div>
+
+      <div class="card-back">
+        <h3>Valle de Guadalupe</h3>
+        <p>"La experiencia fue impecable. Atención al detalle de principio a fin."</p>
+        <span>— Sofía & Mateo</span>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+</section>
+
+<section id="services" class="services">
+    <div class="services-header">
+        <h2>Our Services</h2>
+        <div class="divider"></div>
+    </div>
+
+    <div class="services-grid">
+
+        <div class="service-item">
+            <span class="service-number">01</span>
+            <h3>Full Wedding Planning</h3>
+            <p>From concept to execution, we design and manage every detail with precision and elegance.</p>
+        </div>
+
+        <div class="service-item">
+            <span class="service-number">02</span>
+            <h3>Creative Direction</h3>
+            <p>We define the visual narrative and aesthetic identity of your celebration.</p>
+        </div>
+
+        <div class="service-item">
+            <span class="service-number">03</span>
+            <h3>Destination Weddings</h3>
+            <p>Exclusive experiences in Tulum, San Miguel de Allende, and beyond.</p>
+        </div>
+
+    </div>
+</section>
+
+<section id="contact" class="cta-section">
+    <div class="cta-overlay"></div>
+
+    <div class="cta-content">
+        <h2>Let’s Create Something Exceptional</h2>
+        <p>Your celebration deserves intention, artistry, and flawless execution.</p>
+        <a href="#" class="cta-btn">Schedule a Consultation</a>
+    </div>
+</section>
+
+<footer>
+    <p>© 2026 Magnolia Wedding Planning — Mexico</p>
+</footer>
+
+
+
+<script>
+const cards = document.querySelectorAll('.card');
+
+cards.forEach(card => {
+    card.addEventListener('click', () => {
+
+        cards.forEach(c => {
+            if (c !== card) {
+                c.classList.remove('flip');
+            }
+        });
+
+        card.classList.toggle('flip');
+    });
+});
+</script>
+
+<script>
+window.addEventListener('scroll', () => {
+    const hero = document.querySelector('.hero');
+    hero.style.backgroundPositionY = window.scrollY * 0.4 + "px";
+});
+</script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    const hamburger = document.querySelector(".hamburger");
+    const mobileMenu = document.querySelector(".mobile-menu");
+    const links = document.querySelectorAll(".mobile-menu a");
+
+    function closeMenu() {
+        hamburger.classList.remove("active");
+        mobileMenu.classList.remove("active");
+        document.body.style.overflow = "auto";
+    }
+
+    function openMenu() {
+        hamburger.classList.add("active");
+        mobileMenu.classList.add("active");
+        document.body.style.overflow = "hidden";
+    }
+
+    hamburger.addEventListener("click", function () {
+        if (mobileMenu.classList.contains("active")) {
+            closeMenu();
+        } else {
+            openMenu();
+        }
+    });
+
+    // Cerrar al hacer click en un link
+    links.forEach(link => {
+        link.addEventListener("click", closeMenu);
+    });
+    
+    mobileMenu.addEventListener("click", function (e) {
+    if (e.target === mobileMenu) {
+        closeMenu();
+    }
+});
+
+});
+</script>
+
+
+</body>
+</html>
